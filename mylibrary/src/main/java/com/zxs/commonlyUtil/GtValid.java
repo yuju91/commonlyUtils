@@ -5,6 +5,7 @@ import android.app.AppOpsManager;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.os.Looper;
+import android.text.TextUtils;
 import android.widget.Toast;
 
 import java.lang.reflect.Field;
@@ -362,4 +363,19 @@ public class GtValid {
         }
         return false;
     }
+
+    /**
+     * 1 man 2 girl 果是奇数性别为男，偶数则为女。
+     */
+    public static int isSex(String idCard) {
+        if (!TextUtils.isEmpty(idCard) && idCard.length() == 18) {
+            if (Integer.parseInt(idCard.substring(16, 17)) % 2 == 0) {
+                return 2;
+            } else {
+                return 1;
+            }
+        }
+        return 0;
+    }
+
 }
